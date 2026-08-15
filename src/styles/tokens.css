@@ -1,0 +1,113 @@
+/* =========================================================================
+   WELLNESS MOMENT COMMUNITY — DESIGN TOKENS
+   Fonte unica de verdade para cor, tipografia, espaco e movimento.
+   Nenhum valor HEX deve existir fora deste arquivo.
+   A identidade ainda esta em construcao: trocar um valor aqui atualiza
+   a pagina inteira.
+   ========================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------
+     COR — extraidos da logo (confirmados)
+     --------------------------------------------------------------------- */
+  --wm-green-900: #2c4a3e; /* verde escuro do lettering — cor primaria */
+  --wm-green-400: #85b884; /* verde sage do "MOMENT" — confirmar amostra */
+  --wm-sand-200: #c9c7a6; /* bege esverdeado da arte de marca */
+
+  /* Derivado do proprio verde (nunca terracota / clay / coral) */
+  --wm-green-800: #243d33;
+
+  /* ---------------------------------------------------------------------
+     COR — provisorios, coerentes e faceis de substituir
+     --------------------------------------------------------------------- */
+  --wm-background: #fbfaf7; /* off-white levemente quente */
+  --wm-surface: #f1f0e7; /* blocos e cards */
+  --wm-surface-alt: var(--wm-green-900); /* secoes invertidas */
+  --wm-surface-deep: var(--wm-green-800); /* footer */
+
+  --wm-primary: var(--wm-green-900);
+  --wm-secondary: var(--wm-green-400);
+  --wm-accent: var(--wm-sand-200);
+
+  --wm-text: #1d2b24;
+  --wm-text-muted: #5c6b63; /* 5.44:1 sobre --wm-background — AA */
+  --wm-text-invert: #f6f5ef;
+  --wm-text-invert-muted: #c4cec8; /* AA sobre --wm-surface-alt */
+
+  /* ---------------------------------------------------------------------
+     COR — linhas, bordas e superficies translucidas
+     Declaradas como tokens proprios para que nenhum componente precise
+     de modificador de opacidade sobre uma cor de token.
+     --------------------------------------------------------------------- */
+  --wm-border: rgba(44, 74, 62, 0.14);
+  --wm-border-strong: rgba(44, 74, 62, 0.28);
+  --wm-border-invert: rgba(246, 245, 239, 0.18);
+
+  --wm-thread: rgba(44, 74, 62, 0.18); /* o fio, sobre fundo claro */
+  --wm-thread-invert: rgba(133, 184, 132, 0.38); /* o fio, sobre fundo escuro */
+  /* Trecho ja percorrido. Precisa ser mais forte que o fio base em cada
+     fundo: verde profundo sobre claro, sage sobre escuro. */
+  --wm-thread-live: var(--wm-green-900);
+  --wm-thread-live-invert: var(--wm-green-400);
+
+  --wm-overlay: rgba(44, 74, 62, 0.05);
+  --wm-overlay-invert: rgba(246, 245, 239, 0.06);
+
+  /* Placeholders de imagem — neutros, nunca decorativos */
+  --wm-placeholder: #e7e5d8;
+  --wm-placeholder-ink: #4f5a52; /* 5.70:1 sobre --wm-placeholder — AA */
+  --wm-placeholder-invert: rgba(246, 245, 239, 0.07);
+  --wm-placeholder-ink-invert: rgba(246, 245, 239, 0.78); /* AA sobre o bloco escuro */
+
+  --wm-focus: #1d2b24;
+  --wm-focus-invert: #f6f5ef;
+
+  /* ---------------------------------------------------------------------
+     TIPOGRAFIA
+     Display  = Bestigia      (headlines, numerais, frases-conceito)
+     Texto/UI = Figtree       (paragrafos, botoes, labels, navegacao)
+     Script   = Formale Script — NAO carregada como webfont em lugar nenhum.
+                Aparece exclusivamente dentro da imagem da logo.
+     --------------------------------------------------------------------- */
+  --wm-font-display: 'Bestigia', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --wm-font-sans: 'Figtree', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+
+  /* Escala fluida */
+  --wm-size-display-xl: clamp(2.5rem, 1.55rem + 4.4vw, 5.25rem);
+  --wm-size-display-lg: clamp(2rem, 1.4rem + 2.9vw, 3.75rem);
+  --wm-size-display-md: clamp(1.625rem, 1.28rem + 1.7vw, 2.5rem);
+  --wm-size-display-sm: clamp(1.375rem, 1.2rem + 0.85vw, 1.875rem);
+  --wm-size-quote: clamp(1.75rem, 1.2rem + 2.5vw, 3.25rem);
+  --wm-size-numeral: clamp(2.25rem, 1.7rem + 2.4vw, 3.5rem);
+  --wm-size-lead: clamp(1.0625rem, 1.01rem + 0.28vw, 1.3125rem);
+  --wm-size-body: 1rem;
+  --wm-size-small: 0.875rem;
+  --wm-size-eyebrow: 0.75rem;
+
+  /* ---------------------------------------------------------------------
+     FORMA E ESPACO
+     --------------------------------------------------------------------- */
+  --wm-radius: 4px; /* valor unico, mantido em toda a pagina */
+  /* Recuo do conteudo em relacao ao fio, que corre na borda do container. */
+  --wm-rail: 32px;
+  --wm-rail-lg: 80px;
+  --wm-container: 1280px;
+  --wm-measure: 66ch; /* largura de leitura (60–72 caracteres) */
+
+  /* ---------------------------------------------------------------------
+     MOVIMENTO
+     --------------------------------------------------------------------- */
+  --wm-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --wm-duration: 720ms;
+  --wm-duration-fast: 220ms;
+}
+
+/* Respeito total a preferencia do sistema. Toda animacao da pagina
+   passa por estas variaveis ou pela regra global em global.css. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --wm-duration: 1ms;
+    --wm-duration-fast: 1ms;
+  }
+}

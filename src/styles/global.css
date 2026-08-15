@@ -1,0 +1,201 @@
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   FONTES
+   Figtree vem do Google Fonts (declarado em index.html, com preconnect).
+   Bestigia nao esta no Google Fonts: os arquivos sao esperados em
+   /public/fonts/. Enquanto nao existirem, o navegador cai no fallback
+   declarado em --wm-font-display sem quebrar o layout.
+   Formale Script NAO e carregada aqui nem em nenhum outro lugar:
+   a licenca e de uso pessoal e a fonte aparece apenas dentro da
+   imagem da logo.
+   ========================================================================= */
+@font-face {
+  font-family: 'Bestigia';
+  src:
+    url('/fonts/bestigia.woff2') format('woff2'),
+    url('/fonts/bestigia.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--wm-background);
+    color: var(--wm-text);
+    font-family: var(--wm-font-sans);
+    font-size: var(--wm-size-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--wm-font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Foco visivel em tudo que e navegavel por teclado. */
+  :focus-visible {
+    outline: 2px solid var(--wm-focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: var(--wm-focus-invert);
+  }
+
+  ::selection {
+    background-color: var(--wm-accent);
+    color: var(--wm-text);
+  }
+}
+
+@layer components {
+  /* -----------------------------------------------------------------------
+     REVEAL — deslocamento curto na entrada em viewport
+     ----------------------------------------------------------------------- */
+  .wm-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity var(--wm-duration) var(--wm-ease),
+      transform var(--wm-duration) var(--wm-ease);
+    transition-delay: var(--wm-reveal-delay, 0ms);
+  }
+
+  .wm-reveal[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* -----------------------------------------------------------------------
+     O FIO — elemento-assinatura
+     Linha continua que atravessa a pagina inteira. Cada secao desenha o
+     seu trecho; como as secoes sao contiguas, a linha nunca se interrompe.
+     O trecho "vivo" cresce conforme a secao entra em viewport.
+     ----------------------------------------------------------------------- */
+  .wm-thread {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background-color: var(--wm-thread);
+    pointer-events: none;
+  }
+
+  .wm-thread::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 1px;
+    height: 100%;
+    background-color: var(--wm-thread-live);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform calc(var(--wm-duration) * 2) var(--wm-ease);
+  }
+
+  .wm-thread[data-visible='true']::after {
+    transform: scaleY(1);
+  }
+
+  .on-dark .wm-thread {
+    background-color: var(--wm-thread-invert);
+  }
+
+  .on-dark .wm-thread::after {
+    background-color: var(--wm-thread-live-invert);
+  }
+
+  .wm-thread-node {
+    position: absolute;
+    left: -3px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--wm-secondary);
+    pointer-events: none;
+  }
+
+  /* -----------------------------------------------------------------------
+     FIO RAMIFICADO (secao 04) — desenho progressivo do traco
+     ----------------------------------------------------------------------- */
+  .wm-branch path,
+  .wm-branch line {
+    stroke-dasharray: var(--wm-branch-length, 900);
+    stroke-dashoffset: var(--wm-branch-length, 900);
+    transition: stroke-dashoffset calc(var(--wm-duration) * 2.2) var(--wm-ease);
+  }
+
+  .wm-branch[data-visible='true'] path,
+  .wm-branch[data-visible='true'] line {
+    stroke-dashoffset: 0;
+  }
+}
+
+@layer utilities {
+  .wm-measure {
+    max-width: var(--wm-measure);
+  }
+}
+
+/* =========================================================================
+   PREFERS-REDUCED-MOTION — rede de seguranca global
+   Nada na pagina depende de animacao para ser compreendido.
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .wm-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .wm-thread::after {
+    transform: scaleY(1);
+    transition: none;
+  }
+
+  .wm-branch path,
+  .wm-branch line {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

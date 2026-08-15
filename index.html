@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2C4A3E" />
+
+    <!-- Estes valores espelham `site.meta` em src/content/site.ts.
+         Ficam estáticos aqui para que buscadores e prévias de link os leiam
+         sem depender do JavaScript. Ao alterar um, altere o outro. -->
+    <title>Wellness Moment Community — assinatura mensal para mulheres</title>
+    <meta
+      name="description"
+      content="Um espaço exclusivo para mulheres que querem transformar bem-estar em estilo de vida: conteúdo, experiências, encontros, benefícios e uma comunidade que caminha junto."
+    />
+
+    <link rel="canonical" href="https://wellnessjourney.com.br/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Wellness Moment Community" />
+    <meta property="og:title" content="Wellness Moment Community — assinatura mensal para mulheres" />
+    <meta
+      property="og:description"
+      content="Um espaço exclusivo para mulheres que querem transformar bem-estar em estilo de vida: conteúdo, experiências, encontros, benefícios e uma comunidade que caminha junto."
+    />
+    <meta property="og:url" content="https://wellnessjourney.com.br/" />
+    <!-- [PENDENTE DEFINIÇÃO] imagem Open Graph (1200x630).
+         A tag og:image fica fora até o arquivo existir: apontar para uma
+         imagem inexistente quebra a prévia em vez de melhorá-la.
+         <meta property="og:image" content="https://wellnessjourney.com.br/brand/og-image.jpg" /> -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Wellness Moment Community — assinatura mensal para mulheres" />
+    <meta
+      name="twitter:description"
+      content="Um espaço exclusivo para mulheres que querem transformar bem-estar em estilo de vida: conteúdo, experiências, encontros, benefícios e uma comunidade que caminha junto."
+    />
+
+    <!-- Figtree: apenas os quatro pesos usados, com display=swap.
+         Bestigia é declarada por @font-face em src/styles/global.css e
+         espera os arquivos em /public/fonts/.
+         Formale Script NÃO é carregada: licença de uso pessoal, presente
+         somente dentro da imagem da logo. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

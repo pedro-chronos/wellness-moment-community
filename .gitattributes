@@ -1,0 +1,14 @@
+# Normaliza quebras de linha: LF no repositorio, nativo no disco.
+# Evita que o projeto apareca inteiro como modificado ao trocar de
+# sistema operacional.
+* text=auto eol=lf
+
+# Binarios: nunca converter.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
