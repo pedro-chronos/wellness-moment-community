@@ -47,7 +47,7 @@ export function PricingCard() {
       <div className="p-8 sm:p-10">
         {/* Único lugar da página que usa o lockup completo colorido — a
             aplicação principal da marca, sobre fundo claro. */}
-        <Logo variant="full" height={46} className="-ml-[13px]" />
+        <Logo variant="full" fluid maxWidth={230} className="-ml-[9px]" />
         <p className="mt-4 font-sans text-small text-wm-muted">{pricing.cardSubtitle}</p>
 
         <p className="mt-7 flex flex-wrap items-baseline gap-x-3 gap-y-2">
