@@ -1,61 +1,54 @@
 import { site } from '../content/site';
 import { Button } from './ui/Button';
 import { Eyebrow } from './ui/Eyebrow';
-import { Logo } from './ui/Logo';
 import { Reveal } from './ui/Reveal';
 
 /*
  * SEÇÃO 01 — HERO
  *
- * Composição assimétrica: a promessa ocupa sete colunas à esquerda, a
- * fotografia cinco à direita, deslocada para baixo. O h1 da página vive
- * aqui e em nenhum outro lugar.
+ * Coluna única, só tipografia e respiro. Sem bloco de imagem: a marca
+ * vive no header, e o topo da página ganha silêncio em vez de uma caixa.
  *
- * A headline funciona para quem já viveu um evento e para quem chega sem
- * nunca ter ouvido falar — o conceito é explicado logo abaixo, na 02,
- * antes de qualquer pedido.
+ * Cada elemento tem a sua própria medida — a headline mais larga que o
+ * parágrafo, o parágrafo dentro da largura de leitura — para que o texto
+ * nunca atravesse a tela inteira em telas grandes. O h1 da página vive
+ * aqui e em nenhum outro lugar.
  */
 export function Hero() {
   const { hero } = site;
 
   return (
-    <section id="topo" className="relative px-5 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-32 lg:px-10 lg:pb-28 lg:pt-40">
-      <div className="mx-auto grid w-full max-w-container items-center gap-12 lg:grid-cols-12 lg:gap-14">
-        <div className="lg:col-span-7">
-          <Reveal>
-            <Eyebrow>{hero.eyebrow}</Eyebrow>
-          </Reveal>
+    <section
+      id="topo"
+      className="relative px-5 pb-20 pt-32 sm:px-8 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-32 lg:pt-44"
+    >
+      <div className="mx-auto w-full max-w-container">
+        <Reveal>
+          <Eyebrow>{hero.eyebrow}</Eyebrow>
+        </Reveal>
 
-          <Reveal delay={80}>
-            <h1 className="mt-6 font-display text-display-xl text-wm-ink">
-              <span className="block">{hero.headline[0]}</span>
-              <span className="block text-wm-muted">{hero.headline[1]}</span>
-            </h1>
-          </Reveal>
+        <Reveal delay={80}>
+          <h1 className="mt-7 max-w-4xl font-display text-display-xl text-wm-ink">
+            <span className="block">{hero.headline[0]}</span>
+            <span className="block text-wm-muted">{hero.headline[1]}</span>
+          </h1>
+        </Reveal>
 
-          <Reveal delay={160}>
-            <p className="wm-measure mt-8 text-lead text-wm-muted">{hero.subheadline}</p>
-          </Reveal>
+        <Reveal delay={160}>
+          <p className="wm-measure mt-8 text-lead text-wm-muted">{hero.subheadline}</p>
+        </Reveal>
 
-          <Reveal delay={240}>
-            <div className="mt-10 flex flex-col items-start gap-5">
-              <Button href={site.checkoutUrl}>{site.ctaPrimary}</Button>
-              <p className="font-sans text-small text-wm-muted">{hero.microcopy}</p>
-            </div>
-          </Reveal>
-        </div>
+        <Reveal delay={210}>
+          <p className="mt-7 flex items-center gap-4 font-sans text-small text-wm-muted">
+            <span aria-hidden="true" className="h-px w-10 shrink-0 bg-wm-secondary" />
+            {hero.tagline}
+          </p>
+        </Reveal>
 
-        <Reveal delay={200} className="lg:col-span-5 lg:pt-10">
-          {/* O lockup completo da marca abre a página. Centralizado, com
-              respiro nas bordas e proporção original preservada — a altura
-              acompanha a largura, sem esticar. */}
-          <div className="relative flex items-center justify-center rounded-wm bg-wm-surface px-8 py-14 sm:px-12 sm:py-20">
-            {/* Moldura fina em sage: o mesmo traço do fio, aqui como enquadramento. */}
-            <span
-              aria-hidden="true"
-              className="absolute -left-3 -top-3 h-24 w-24 border-l border-t border-wm-secondary"
-            />
-            <Logo variant="full" fluid maxWidth={400} />
+        <Reveal delay={270}>
+          <div className="mt-11 flex flex-col items-start gap-5">
+            <Button href={site.checkoutUrl}>{site.ctaPrimary}</Button>
+            <p className="font-sans text-small text-wm-muted">{hero.microcopy}</p>
           </div>
         </Reveal>
       </div>

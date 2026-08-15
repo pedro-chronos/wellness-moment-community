@@ -21,9 +21,19 @@ export function Header() {
         scrolled ? 'border-b border-wm-border bg-wm-bg' : 'border-b border-transparent bg-transparent',
       )}
     >
-      <div className="mx-auto flex h-[68px] w-full max-w-container items-center justify-between gap-6 px-5 sm:px-8 lg:px-10">
-        <a href="#topo" className="flex items-center" aria-label={`${site.meta.siteName} — início`}>
-          <Logo variant="mono" height={30} />
+      {/* O lockup completo é empilhado em três linhas, então pede mais
+          altura que uma logo horizontal. 80px de header acomodam 52px de
+          marca com folga; a margem negativa compensa a área de proteção
+          e alinha a logo à borda do container. */}
+      <div className="mx-auto flex h-20 w-full max-w-container items-center justify-between gap-6 px-5 sm:px-8 lg:px-10">
+        {/* shrink-0: sem isto o link encolhe como flex item e esmaga a
+            logo horizontalmente em larguras intermediárias. */}
+        <a
+          href="#topo"
+          className="flex shrink-0 items-center"
+          aria-label={`${site.meta.siteName} — início`}
+        >
+          <Logo variant="full" height={52} className="-ml-[15px]" />
         </a>
 
         <nav aria-label="Seções da página" className="hidden items-center gap-8 lg:flex">

@@ -135,9 +135,10 @@ export const site = {
     headline: ['O Wellness Moment não termina quando o evento acaba.', 'Ele continua com você.'],
     subheadline:
       'Um espaço exclusivo para mulheres que querem transformar bem-estar em estilo de vida — com conteúdo, experiências, encontros, benefícios e uma comunidade que caminha junto.',
+    tagline: 'A jornada continua aqui.',
     microcopy: 'Assinatura mensal • Comunidade exclusiva • Benefícios especiais',
-    // O bloco visual do hero é ocupado pelo lockup completo da marca
-    // (site.logo.full), não por fotografia.
+    // O hero não tem bloco visual: a marca vive no header e o topo da
+    // página é só tipografia e respiro.
   },
 
   /* =====================================================================
