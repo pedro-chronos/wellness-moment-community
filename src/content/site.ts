@@ -67,7 +67,10 @@ export const site = {
   /* ---------------------------------------------------------------------
      CONVERSÃO
      --------------------------------------------------------------------- */
-  checkoutUrl: 'https://wellnessjourney.com.br/auth#8ab277',
+  // Link de pagamento. Alimenta TODOS os CTAs primários da página de uma
+  // vez: header, hero, fim dos benefícios, card de assinatura, fechamento
+  // e o CTA fixo do mobile. Todos abrem em nova aba.
+  checkoutUrl: 'https://invoice.infinitepay.io/plans/bewellness/joNwTNH1JZ',
   brandFormUrl: null as MaybeUrl, // [PENDENTE DEFINIÇÃO] — formulário de marcas
 
   ctaPrimary: 'QUERO FAZER PARTE',
@@ -133,12 +136,8 @@ export const site = {
     subheadline:
       'Um espaço exclusivo para mulheres que querem transformar bem-estar em estilo de vida — com conteúdo, experiências, encontros, benefícios e uma comunidade que caminha junto.',
     microcopy: 'Assinatura mensal • Comunidade exclusiva • Benefícios especiais',
-    media: {
-      label: '[IMAGEM HERO]',
-      alt: 'Fotografia principal da Wellness Moment Community: mulheres reais em movimento durante uma experiência do Wellness Moment.',
-      ratio: '4 / 5',
-      src: null,
-    } as MediaPlaceholder,
+    // O bloco visual do hero é ocupado pelo lockup completo da marca
+    // (site.logo.full), não por fotografia.
   },
 
   /* =====================================================================
@@ -155,9 +154,9 @@ export const site = {
     highlight: ['Porque wellness não é um evento.', 'É uma escolha que você faz todos os dias.'],
     media: {
       label: '[FOTO EXPERIÊNCIA]',
-      alt: 'Detalhe de uma experiência Wellness Moment: textura, movimento e um momento espontâneo entre participantes.',
-      ratio: '3 / 4',
-      src: null,
+      alt: 'Duas mulheres à mesa durante uma experiência Wellness Moment, em conversa, com café e comida servidos.',
+      ratio: '2 / 3',
+      src: '/fotos/experiencia-mesa.jpg',
     } as MediaPlaceholder,
   },
 

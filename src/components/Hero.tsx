@@ -1,7 +1,7 @@
 import { site } from '../content/site';
 import { Button } from './ui/Button';
 import { Eyebrow } from './ui/Eyebrow';
-import { Media } from './ui/Media';
+import { Logo } from './ui/Logo';
 import { Reveal } from './ui/Reveal';
 
 /*
@@ -45,14 +45,17 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delay={200} className="lg:col-span-5 lg:pt-16">
-          <div className="relative">
+        <Reveal delay={200} className="lg:col-span-5 lg:pt-10">
+          {/* O lockup completo da marca abre a página. Centralizado, com
+              respiro nas bordas e proporção original preservada — a altura
+              acompanha a largura, sem esticar. */}
+          <div className="relative flex items-center justify-center rounded-wm bg-wm-surface px-8 py-14 sm:px-12 sm:py-20">
             {/* Moldura fina em sage: o mesmo traço do fio, aqui como enquadramento. */}
             <span
               aria-hidden="true"
               className="absolute -left-3 -top-3 h-24 w-24 border-l border-t border-wm-secondary"
             />
-            <Media media={hero.media} priority />
+            <Logo variant="full" fluid maxWidth={400} />
           </div>
         </Reveal>
       </div>

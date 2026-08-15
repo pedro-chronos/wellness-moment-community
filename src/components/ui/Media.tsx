@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { MediaPlaceholder } from '../../content/site';
 import { asset } from '../../lib/asset';
 import { cn } from './cn';
@@ -19,12 +20,15 @@ interface Props {
  * usada para preencher espaço.
  *
  * Quando `media.src` for preenchido em site.ts, o mesmo componente passa
- * a renderizar a imagem real, com o `alt` já descrito no conteúdo.
+ * a renderizar a imagem real, com o `alt` já descrito no conteúdo. Se o
+ * arquivo estiver referenciado mas ausente do disco, cai de volta no
+ * placeholder — nunca um ícone de imagem quebrada.
  */
 export function Media({ media, tone = 'light', priority = false, className }: Props) {
+  const [failed, setFailed] = useState(false);
   const style = { aspectRatio: media.ratio };
 
-  if (media.src) {
+  if (media.src && !failed) {
     return (
       <img
         src={asset(media.src)}
@@ -32,6 +36,7 @@ export function Media({ media, tone = 'light', priority = false, className }: Pr
         style={style}
         loading={priority ? 'eager' : 'lazy'}
         decoding={priority ? 'sync' : 'async'}
+        onError={() => setFailed(true)}
         className={cn('w-full rounded-wm object-cover', className)}
       />
     );
